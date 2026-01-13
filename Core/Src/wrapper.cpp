@@ -7,6 +7,7 @@
 Servo servo1;
 
 void init(){
+
 	printf("=== Servo Control Initialize ===\n");
 	
 	// サーボ1をTIM1のチャネル1に設定
@@ -24,19 +25,24 @@ void init(){
 	HAL_Delay(1000);
 }
 
-// サーボ角度制御用の状態変数
-static int servo_direction = 1;  // 1: 増加, -1: 減少
-static float servo_angle = 0.0f;
 
 void loop(){
+
+	// サーボ角度制御用の状態変数
+	static int servo_direction = 1;  // 1: 増加, -1: 減少
+	static float servo_angle = 0.0f;
+
 	// 角度を -90 ~ +90 の範囲でスイープ
 	servo_angle += servo_direction * 5.0f;
 	
 	// 範囲チェック
 	if (servo_angle >= 90.0f) {
+
 		servo_angle = 90.0f;
 		servo_direction = -1;
-	} else if (servo_angle <= -90.0f) {
+	}
+	else if (servo_angle <= -90.0f) {
+
 		servo_angle = -90.0f;
 		servo_direction = 1;
 	}
