@@ -1,7 +1,5 @@
 # STM32CubeIDE
 .metadata/
-.cproject
-.project
 .settings/
 *.launch
 
